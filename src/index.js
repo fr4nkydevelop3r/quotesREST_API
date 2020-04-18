@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import { json, urlencoded } from 'body-parser'
+import "regenerator-runtime/runtime.js";
 
 import cors from 'cors';
 import express from 'express';
