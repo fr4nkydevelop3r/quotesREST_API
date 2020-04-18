@@ -1,10 +1,20 @@
-import http from 'http';
+import 'dotenv/config';
+import { json, urlencoded } from 'body-parser'
 
-const server = http.createServer((req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-}).listen(process.env.PORT, '127.0.0.1');
+import cors from 'cors';
+import express from 'express';
+const app  = express();
 
-console.log('Server running at http://127.0.0.1:1337/');
+app.use(cors());
+app.use(json())
+app.use(urlencoded({ extended: true }))
 
-export default server;
+
+app.use('/', (req, res) => {
+    res.send({'data': 'Holis mundo cruel'})
+});
+
+app.listen(process.env.PORT, () => 
+        console.log(`Server listening on port ${process.env.PORT}`)
+    
+        )
